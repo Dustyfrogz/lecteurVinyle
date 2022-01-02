@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Audio</title>
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body onload="displayTitleTime()">
+    <div id="platine">
+
+
+        <div id="backPlatine">
+
+            <div id="disk1" class="Entiredisk">
+                <img id="diskvinyle1" class="Entiredisk" src="./image/disque-vinyle.png">
+                <img id="diskvinylecenter1" class="diskCenter">
+            </div>
+
+
+            <div id="disk2" class="Entiredisk">
+                <img id="diskvinyle2" class="Entiredisk" src="./image/disque-vinyle.png">
+                <img id="diskvinylecenter2" class="diskCenter">
+            </div>
+
+            <div id="disk3" class="Entiredisk">
+                <img id="diskvinyle3" class="Entiredisk" src="./image/disque-vinyle.png">
+                <img id="diskvinylecenter3" class="diskCenter">
+            </div>
+
+            <div id="disk4" class="Entiredisk">
+                <img id="diskvinyle4" class="Entiredisk" src="./image/disque-vinyle.png">
+                <img id="diskvinylecenter4" class="diskCenter">
+            </div>
+            <div id="divArm">
+                <img id="arm" src="./image/record-needle-arm.png">
+            </div>
+            <div id="divDisk">
+                <img id="disk" src="./image/disque-vinyle.png">
+                <img id="centerVinyle" src="image/lentedepression.jpg">
+            </div>
+            <div class="buttons" id="loopButtonDiv">
+                <img src="./image/loop.png" alt="lecture en boucle" id="loopButton" data-value="0">
+            </div>
+            <div class="buttons" id="previousButtonDiv">
+                <img src="./image/previousButton.png" alt="Bouton precedent" id="previousButton">
+            </div>
+            <div class="buttons" id="nextButtonDiv">
+                <img src="./image/nextButton.png" alt="Bouton suivant" id="nextButton">
+            </div>
+            <div id="playPauseButtonDiv" class="red">
+                <input type="button" class="icon" id="playPauseButton" data-nummusic="0" data-state="false">
+
+            </div>
+            <div id="stopButtonDiv">
+                <input type="button" id="stopButton">
+            </div>
+            <div id="display">
+
+                <div id="titreDiv">
+                    <input type="text" id="titre" size="40">
+                </div>
+                <div id="timeTotTimeCur">
+                    <div>
+                        <img class="time" src="image/cb.gif" name="i">
+                        <img class="time" src="image/cb.gif" name="j">
+                        <img class="timecolon" src="image/colon.gif" name="c">
+                        <img class="time" src="image/cb.gif" name="k">
+                        <img class="time" src="image/cb.gif" name="l">
+                        <img class="timecolon" src="image/colon.gif" name="f">
+                        <img class="time" src="image/cb.gif" name="m">
+                        <img class="time" src="image/cb.gif" name="n">
+                    </div>
+                    <div>
+                        <img class="time" src="image/cb.gif" name="a">
+                        <img class="time" src="image/cb.gif" name="b">
+                        <img class="timecolon" src="image/colon.gif" name="c">
+                        <img class="time" src="image/cb.gif" name="d">
+                        <img class="time" src="image/cb.gif" name="e">
+                        <img class="timecolon" src="image/colon.gif" name="f">
+                        <img class="time" src="image/cb.gif" name="g">
+                        <img class="time" src="image/cb.gif" name="h">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="vitesse"><img id="BGVitesse" src="image/BGVitesse.png" alt=""><img id="BTNVitesse" src="image/BTNVitesse.png" alt=""></div>
+        <div id="volume"><img id="BGVolume" src="image/BGVolume.jpg" alt=""><img id="BTNVolume" src="image/BTNVolume.jpg" alt=""></div>
+    </div>
+
+
+    <div id="AudioPlayer">
+        <div id="playerDiv" class="lecteur">
+            <audio id="player" src="Arne Vinzon - Lente Dépression.mp3" controls>
+        
+    </audio>
+        </div>
+    </div>
+
+</body>
+<script src="Draggable.min.js"></script>
+<script src="gsap.min.js"></script>
+<script src="main.js"></script>
+
+</html>
