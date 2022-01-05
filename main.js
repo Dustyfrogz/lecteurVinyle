@@ -14,16 +14,15 @@ let interval;
 let player = document.querySelector("#player");
 let songTimeEnd = player.duration;
 let timeElapsed = player.currentTime;
-// var volumeControl = document.getElementById('vol-control');
 var rate = document.querySelector("#BTNVitesse");
 let timelineTurnCenter = gsap.timeline({ repeat: -1, defaults: { ease: "none" } });
-//let timelinePlay = gsap.timeline({ repeat: 0, defaults: { ease: "none" } });
+
 let setRated = 1;
 let stopBut = document.querySelector("#stopButton");
-/////////////////////////////////
-let testinter;
+
+
 let rotateOnDragEnd;
-//let ArmGO = gsap.to("#arm", { rotation: 93, duration: ((songTimeEnd - (songTimeEnd * (gsap.getProperty("#arm", "rotation") - 76) / 17)) / (player.playbackRate)), onComplete: retourzerobras });
+
 let contenus = {};
 let ArmGO = TweenMax.to("#arm", { rotation: 70, duration: 2 });
 let vitesse = 1; //vitesse de lecture, 1 au départ
@@ -55,12 +54,7 @@ timelineTurn.pause();
 timelineTurnCenter.pause();
 
 
-// /////////////// Controle du volume
-// volumeControl.addEventListener('input', SetVolume);
-// var SetVolume = function() {
-//     player.volume = this.value / 100;
-//     console.log(this.value);
-// };
+
 
 
 
@@ -128,27 +122,16 @@ const dragableVit = Draggable.create("#BTNVitesse", {
             timelineTurnCenter.timeScale(player.playbackRate.toFixed(2));
             setRated = player.playbackRate.toFixed(2);
 
-            //console.log((player.duration - player.currentTime) + " " + ((player.duration - (player.duration * ((gsap.getProperty("#arm", "rotation") - 76) / 17))) * player.playbackRate));
-            //console.log(ArmGO.duration());
 
             player.pause();
             dragEnd = 0;
             play();
         },
         ///////////////////////////////au début du déplacement
-        onDragStart: function() {
-            // dragEnd = 0;
-            // timelineTurn.pause();
-            // timelineTurnCenter.pause();
-            // player.pause();
-            //SetRate();
-        },
+        onDragStart: function() {},
 
         /////////////////////////////// au click sans déplacement
-        onPress: function() {
-            // dragEnd = 0;
-            // player.pause();
-        },
+        onPress: function() {},
 
         ////////////////////////////////// au relachement du click sans déplacement. Obligatoire avec onPress
         onRelease: function() {
@@ -175,32 +158,16 @@ const dragableVol = Draggable.create("#BTNVolume", {
             let volume = (this.x + 90) / 180; // vitesse de lecture
             console.log(volume);
             player.volume = volume;
-            // vitesse = vitessePosition;
-            // player.playbackRate = vitessePosition.toFixed(2);
-            // timelineTurn.timeScale(player.playbackRate.toFixed(2));
-            // timelineTurnCenter.timeScale(player.playbackRate.toFixed(2));
-            // setRated = player.playbackRate.toFixed(2);
 
-            // //console.log((player.duration - player.currentTime) + " " + ((player.duration - (player.duration * ((gsap.getProperty("#arm", "rotation") - 76) / 17))) * player.playbackRate));
-            // //console.log(ArmGO.duration());
-
-            // player.pause();
-            // dragEnd = 0;
-            // play();
         },
         ///////////////////////////////au début du déplacement
         onDragStart: function() {
-            // dragEnd = 0;
-            // timelineTurn.pause();
-            // timelineTurnCenter.pause();
-            // player.pause();
-            //SetRate();
+
         },
 
         /////////////////////////////// au click sans déplacement
         onPress: function() {
-            // dragEnd = 0;
-            // player.pause();
+
         },
 
         ////////////////////////////////// au relachement du click sans déplacement. Obligatoire avec onPress
@@ -230,8 +197,7 @@ function play() {
 
         ////////////// Rotation actuelle du bras
         rotateOnDragEnd = gsap.getProperty("#arm", "rotation");
-        /////////////  Durée de la musique en minute
-        //console.log("en minute" + new Date(songTimeEnd * 1000).toISOString().substr(11, 8));
+
 
         ///////////////////////////fonction affichage temps lecture
         showTime();
@@ -251,53 +217,17 @@ function play() {
         /////////////Place le bouton en mode lecture
         PlayPauseButton.classList.add("iconplay");
         PlayPauseButton.setAttribute("data-index", "true");
-        //playPauseButtonDiv.classList.toggle("green");
         playPauseButtonDiv.className = "green";
-
-        //testinter = setInterval(testaudio, 2000); ///// donne la rotation du bras
-
         dragEnd = 1; ////// INTERDIT LE REDRAG ACCIDENTEL
     } else {
         stopAll();
         showTime();
         PlayPauseButton.classList.remove("iconplay");
         PlayPauseButton.setAttribute("data-index", "false");
-        //playPauseButtonDiv.classList.remove("green");
         playPauseButtonDiv.className = "red";
 
     }
 }
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////// Modifier la vitesse de lecture et relancer la lecture à la bonne vitesse
-// function SetRate() {
-//     console.log((this.y - 100) / -90);
-//     vitesse = vitessePosition;
-//     player.playbackRate = vitessePosition.toFixed(2);
-//     timelineTurn.timeScale(player.playbackRate.toFixed(2));
-//     timelineTurnCenter.timeScale(player.playbackRate.toFixed(2));
-//     setRated = player.playbackRate.toFixed(2);
-
-//     console.log((player.duration - player.currentTime) + " " + ((player.duration - (player.duration * ((gsap.getProperty("#arm", "rotation") - 76) / 17))) * player.playbackRate));
-//     console.log(ArmGO.duration());
-
-//     player.pause();
-//     dragEnd = 0;
-//     play();
-
-// };
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////  pour console.log la position du bras
-// function testaudio() {
-//     console.log("duree :" + gsap.getProperty("#arm", "rotation"));
-//     let rotate = arm.style.transform;
-//     rotate = rotate.slice(rotate.indexOf("rotate(") + 7, rotate.indexOf("."))
-//     if (rotate <= 74) {
-//         clearInterval(testaudio);
-//     }
-// }
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -360,13 +290,10 @@ function banniere() {
     if (posBan >= msgBan.length) {
         posBan = 0;
         msgBan = msgBan + "   " + msgBan;
-        //console.log("test1");
     } else if (posBan == 0) {
         msgBan = "   " + msgBan;
-        console.log("test2");
         while (msgBan.length < 198) {
             msgBan = msgBan + "    " + msgBan;
-            console.log("test3");
         }
     }
     document.querySelector("#titre").value = msgBan.substring(posBan, posBan + msgBan.length);
@@ -386,7 +313,6 @@ function imageOnTop() {
     let zz = 0;
 
     document.querySelectorAll(".diskCenter").forEach(element => {
-        // document.querySelector('#diskvinylecenter' + i).src = contenus[y].image;
         element.src = contenus[zz].image;
 
         element.setAttribute("data-index", zz);
@@ -435,7 +361,6 @@ PlayPauseButton.addEventListener("click", function() {
                 play();
             }
         } else {
-            //playButton(parseInt(this.getAttribute("numMusic")));
             playButton(1);
 
         }
@@ -614,33 +539,6 @@ p.then(async function(response) {
         console.log(error);
     });
 
-
-/*
- ** SCROLL
- */
-
-
-// var scrollDistance = document.body.clientHeight / 2;
-// var winScrollY;
-// const timelineScrolled = gsap.timeline({
-//     paused: true,
-//     defaults: {
-//         ease: 'power2.inOut',
-//         duration: 1,
-//     },
-// });
-
-// timelineScrolled
-// .from('.main__content', { opacity: 0, y: 300 })
-// .to(".sun", { rotation: 27, x: 100 }, "-=1.5")
-
-// function scrolled() {
-//     winScrollY = window.scrollY;
-//     timelineScrolled.progress(winScrollY / scrollDistance);
-// }
-// scrolled();
-
-// window.addEventListener("scroll", scrolled);
 
 var dn;
 c1 = new Image();
